@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/login_signup.css">
+
+</head>
+
+<body>
+
+
+    <div class="main">
+        <div class="signup">
+            <form id="loginForm">
+
+                <label for="chk" aria-hidden="true">Login</label>
+                <input type="text" id="username_lgn" name="user" placeholder="User Name" required="">
+                <input type="password" id="password_lgn" name="pswd" placeholder="Password" required="">
+                <input class="inl" id="showpas" type="checkbox" onclick="showpass()">
+                <label class="inl" for="showpas">Show Password</label>
+                <button type="submit">Login</button>
+            </form>
+            <p id="loginMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          var username = document.getElementById("username_lgn").value;
+          var password = document.getElementById("password_lgn").value;
+
+          // Check if the user is registered
+          var users = JSON.parse(localStorage.getItem("users")) || [];
+          var user = users.find(function (u) {
+            return u.username === username && u.password === password;
+          });
+
+          if (user) {
+            // Store the user in localStorage
+            localStorage.setItem("currentUser", JSON.stringify(user));
+
+            // Redirect to the appropriate page based on user type
+            if (user.type === "Admin") {
+              window.location.href = "./Admin.html";
+            } else {
+              window.location.href = "./UserPage.html";
+            }
+          } else {
+            document.getElementById("loginMessage").textContent =
+              "Invalid username or password.";
+          }
+        });
+        function showpass() {
+          var pass_input = document.getElementById("password_lgn");
+          var chbox = document.getElementById("showpas");
+          if (chbox.checked == true) {
+              pass_input.type = "text";
+          } else {
+              pass_input.type = "password";
+          }
+      }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/cart.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Book Shopping Cart</h1>
+            <nav id="welcom">
+                <ul>
+                    <li class="fa fa-list" aria-hidden="true" style="font-size:25px"><a href="UserPage.html"> Products</a> </li>
+                    <li class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"><a href="cart.html">Cart</a> </li>
+                    <li class="fa fa-file-text-o" aria-hidden="true" style="font-size:25px"><a href="../html/Customer_orders.html"> My Orders</a></li>
+                    <li onclick="logoutUser()" class="fa fa-sign-out" aria-hidden="true" style="font-size:25px">logout </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="cart-items">
+            <h2>Items in Your Cart</h2>
+            <div id="cart-items">
+
+            </div>
+        </section>
+
+        <aside class="summary">
+            <h2>Order Summary</h2>
+            <p id="total-amount"></p>
+            <button id="apply-order-button" class="checkout-button">Apply Order</button>
+        </aside>
+    </main>
+    <script src="../js/cart.js"></script>
+    <script src="../js/auth_Scripts.js"></script>
+</body>
+
+</html>
